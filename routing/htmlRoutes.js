@@ -1,9 +1,15 @@
+const path = require("path");
+
 module.exports = function (app) {
 
     // displays survey page
-    app.get("/survey")
+    app.get("/survey", function (res) {
+        res.sendFile(path.join(__dirname, "../public", "survey.html"));
+    });
 
-    // path to home page
-    app.get("/:")
+    // displays home page
+    app.get("*", function (res) {
+        res.sendFile(path.join(__dirname, "../public", "home.html"));
+    });
 
 }
