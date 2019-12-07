@@ -1,9 +1,9 @@
 let friends = [
     {
-        "name": "entry",
-        "photo": "link",
+        "name": "Karina",
+        "photo": "",
         "scores": [
-            // 10 scores saved here
+            5, 4, 3, 3, 2, 7, 9, 6, 7, 9
         ]
     }
 ]
