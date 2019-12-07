@@ -11,7 +11,14 @@ module.exports = function (app) {
     app.post("/api/friends", function (req, res) {
         console.log(req.body);
         // save user data in friends array in friends.js
-        
+
+        // compare the difference between current user's scores 
+        // against those from other users, question by question. 
+        // Add up the differences to calculate the totalDifference
+        let totalDifference = 
+
+
+
     });
 
 }
