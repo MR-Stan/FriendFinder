@@ -11,18 +11,19 @@ let questionBank = [
     "I see myself as conventional, uncreative."
 ]
 
-for (let i = 1; i < 11; i++) {
-    $("#questions").append("<br>" + "Question " + i + "<br>" + questionBank[i - 1]);
-    // $("#questions").append(
-    //     "<div class="dropdown">
-    //         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    //             Dropdown button
-    //         </button>
-    //         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    //             <a class="dropdown-item" href="#">Action</a>
-    //             <a class="dropdown-item" href="#">Another action</a>
-    //             <a class="dropdown-item" href="#">Something else here</a>
-    //         </div>
-    //     </div>"
-    // );
+for (let i = 1; i < questionBank.length + 1; i++) {
+    $('#questions').append('<hr>')
+    $("#questions").append("Question " + i + "<br>" + questionBank[i - 1]);
+    $("#questions").append([
+        $('<div/>', { 'class': 'dropdown' }),
+        $('<button/>', { 'class': 'btn btn-secondary dropdown-toggle', 'type': 'button', 'id': 'dropdownMenuButton', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false', 'text': '       ' }).append([
+            $('<div/>', { 'class': 'dropdown-menu', 'area-labelledby': 'dropdownMenuButton' }).append([
+                $('<a/>', { 'class': 'dropdown-item', 'href': '#', 'text': 'Strongly Agree', 'id': 'answer1', }),
+                $('<a/>', { 'class': 'dropdown-item', 'href': '#', 'text': 'Agree', 'id': 'answer2', }),
+                $('<a/>', { 'class': 'dropdown-item', 'href': '#', 'text': 'Meh', 'id': 'answer3', }),
+                $('<a/>', { 'class': 'dropdown-item', 'href': '#', 'text': 'Disagree', 'id': 'answer4', }),
+                $('<a/>', { 'class': 'dropdown-item', 'href': '#', 'text': 'Stronly Disagree', 'id': 'answer5', }),
+            ])
+        ])
+    ])
 }
