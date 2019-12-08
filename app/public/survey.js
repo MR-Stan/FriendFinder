@@ -11,10 +11,6 @@ let questionBank = [
     "I see myself as conventional, uncreative."
 ];
 
-
-
-
-
 for (let i = 1; i < questionBank.length + 1; i++) {
     $('#questions').append('<hr>')
     $("#questions").append("Question " + i + "<br>" + questionBank[i - 1]).append('<br>');
