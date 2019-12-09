@@ -32,7 +32,6 @@ $(document).ready(function () {
     $("#submitSurvey").on("click", function (event) {
         event.preventDefault();
         function validateForm() {
-            console.log("test");
             let isValid = true;
             $(".form-control").each(function () {
                 if ($(this).val() === "") {
@@ -63,7 +62,6 @@ $(document).ready(function () {
                     $("#q10").val()
                 ]
             };
-            console.log(userData);
             $.post("/api/friends", userData, function (data) {
                 $("#match-name").text(data.name);
                 $("#match-img").attr("src", data.photo);
