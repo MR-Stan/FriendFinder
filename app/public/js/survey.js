@@ -1,3 +1,5 @@
+console.log("bag of dicks");
+
 let questionBank = [
     "I see myself as extraverted, enthusiastic.",
     "I see myself as critical, quarrelsome.",

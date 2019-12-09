@@ -9,15 +9,12 @@ module.exports = function (app) {
 
     // handles incoming survey results and compatibility logic
     app.post("/api/friends", function (req, res) {
-        console.log(req.body);
-        // save user data in friends array in friends.js
+        
+        // let totalDifference = 
 
-        // compare the difference between current user's scores 
-        // against those from other users, question by question. 
-        // Add up the differences to calculate the totalDifference
-        let totalDifference = 
-
-
+        for (let i = 0; i < friends.length; i++) {
+            console.log(i);
+        }
 
     });
 
