@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-        
+
 </head>
 
 <body>
@@ -29,9 +29,30 @@
             <input type="text" id="photo" class="form-control" name="photo">
             <div id="questions">
                 <!-- from survey.js -->
-                <script type="text/javascript" src="./survey.js"></script>
+                <script type="text/javascript" src="./js/survey.js"></script>
             </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg" id="submitSurvey" value="submit">Submit Survey</button>
+
         </form>
+    </div>
+
+    <!-- modal -->
+    <div id="results-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="match-name"></h2>
+                </div>
+                <div class="modal-body">
+                    <img id="match-img" src="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- popper -->
@@ -42,6 +63,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

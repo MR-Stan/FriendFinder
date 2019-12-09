@@ -1,5 +1,3 @@
-console.log("bag of dicks");
-
 let questionBank = [
     "I see myself as extraverted, enthusiastic.",
     "I see myself as critical, quarrelsome.",
@@ -13,11 +11,12 @@ let questionBank = [
     "I see myself as conventional, uncreative."
 ];
 
+// display questions from questionBank
 for (let i = 1; i < questionBank.length + 1; i++) {
     $('#questions').append('<hr>')
     $("#questions").append("Question " + i + "<br>" + questionBank[i - 1]).append('<br>');
     $("#questions").append([
-        $('<select/>', { 'class': 'selectpicker' }).append([
+        $('<select/>', { 'class': 'selectpicker', 'id': 'q' + i }).append([
             $('<option/>', { 'text': ' ' }),
             $('<option/>', { 'text': 'Strongly Agree', 'id': '5' }),
             $('<option/>', { 'text': 'Agree', 'id': '4' }),
@@ -27,3 +26,53 @@ for (let i = 1; i < questionBank.length + 1; i++) {
         ])
     ])
 }
+
+// when survey submit button is clicked validate entries and transfer data to friends list
+$(document).ready(function () {
+    $("#submitSurvey").on("click", function (event) {
+        event.preventDefault();
+        function validateForm() {
+            console.log("test");
+            let isValid = true;
+            $(".form-control").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
+            $(".selectpicker").each(function () {
+                if (parseInt($(this).val() === "")) {
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+        if (validateForm()) {
+            let userData = {
+                name: $("#name").val(),
+                photo: $("#photo").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                    $("#q6").val(),
+                    $("#q7").val(),
+                    $("#q8").val(),
+                    $("#q9").val(),
+                    $("#q10").val()
+                ]
+            };
+            console.log(userData);
+            $.post("/api/friends", userData, function (data) {
+                $("#match-name").text(data.name);
+                $("#match-img").attr("src", data.photo);
+                $("#results-modal").modal("toggle");
+            });
+
+        }
+        else {
+            alert("Please fill out all fields.");
+        }
+    });
+});
