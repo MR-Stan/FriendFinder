@@ -19,7 +19,7 @@ module.exports = function (app) {
 
         // adds scores from survey to newFriend scores
         for (let i = 0; i < req.body.scores.length; i++) {
-            newFriend.scores.push(parseInt(req.body.scores[i]))
+            newFriend.scores.push(req.body.scores[i]);
         }
 
         // keeps track of relatability score for each friend
@@ -28,14 +28,26 @@ module.exports = function (app) {
         for (let i = 0; i < friendData.length; i++) {
             let totalDifference = 0;
             for (let j = 0; j < newFriend.scores.length; j++) {
-                totalDifference += Math.abs(newFriend.scores[j] - friendData[i].scores[j]);
+                totalDifference += Math.abs(parseInt(newFriend.scores[j]) - parseInt(friendData[i].scores[j]));
             }
             compareScoresArr.push(totalDifference);
         }
 
-        
+        // holds index of most relatable match
+        let matchIndex = 0;
+        // cycle through arr to find lowest (best) relatability score
+        for (let i = 0; i < compareScoresArr.length; i++) {
+            if (compareScoresArr[i] <= compareScoresArr[matchIndex]) {
+                matchIndex = i;
+            }
+        }
 
+        // if duplicates, chooses first 
+        let bestMatch = friendData[matchIndex];
+
+        res.json(bestMatch);
+
+        friendData.push(newFriend);
 
     });
-
 }

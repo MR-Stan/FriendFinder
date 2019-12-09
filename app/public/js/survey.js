@@ -17,12 +17,12 @@ for (let i = 1; i < questionBank.length + 1; i++) {
     $("#questions").append("Question " + i + "<br>" + questionBank[i - 1]).append('<br>');
     $("#questions").append([
         $('<select/>', { 'class': 'selectpicker', 'id': 'q' + i }).append([
-            $('<option/>', { 'text': ' ' }),
-            $('<option/>', { 'text': 'Strongly Agree', 'id': '5' }),
-            $('<option/>', { 'text': 'Agree', 'id': '4' }),
-            $('<option/>', { 'text': 'Neutral', 'id': '3' }),
-            $('<option/>', { 'text': 'Disagree', 'id': '2' }),
-            $('<option/>', { 'text': 'Strongly Disagree', 'id': '1' }),
+            $('<option/>', { 'text': "" }),
+            $('<option/>', { 'text': 'Strongly Agree', 'id': '5', 'value': 5 }),
+            $('<option/>', { 'text': 'Agree', 'id': '4', 'value': 4 }),
+            $('<option/>', { 'text': 'Neutral', 'id': '3', 'value': 3 }),
+            $('<option/>', { 'text': 'Disagree', 'id': '2', 'value': 2 }),
+            $('<option/>', { 'text': 'Strongly Disagree', 'id': '1', 'value': 1 }),
         ])
     ])
 }
@@ -39,7 +39,7 @@ $(document).ready(function () {
                 }
             });
             $(".selectpicker").each(function () {
-                if (parseInt($(this).val() === "")) {
+                if ($(this).val() === "") {
                     isValid = false;
                 }
             });
@@ -62,12 +62,13 @@ $(document).ready(function () {
                     $("#q10").val()
                 ]
             };
+
             $.post("/api/friends", userData, function (data) {
                 $("#match-name").text(data.name);
                 $("#match-img").attr("src", data.photo);
                 $("#results-modal").modal("toggle");
             });
-
+            return false
         }
         else {
             alert("Please fill out all fields.");
